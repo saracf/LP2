@@ -1,18 +1,30 @@
 from historico import Historico
-
 class Conta:
     #Para definir os atributos precisamos di init
+    _total_contas = 0
+    #variáel de slots para definir os objetos do tipo Conta
+    __slots__ = ['_numero', '_titular', '_saldo', '_limite', '_historico']
+
+
+    #para definir os atributos precisamos do init
     def __init__(self, n, t, s, l=100): #Variaveis locais
         self._numero = n #Variveis de objeto
-        self.titular = t
+        self._titular = t
         self._saldo = s #atributo provado
         self._limite = l
         self._historico = Historico()
+        Conta._total_contas += 1
 
     #Métodos de acesso
-    @property
-    def saldo(self):
-        return self._saldo
+    #Acesso para o atributo de classe
+    #@staticmethod primeira forma
+    @classmethod #segunda forma
+    def get_total_contas(cls):
+        return Conta._total_contas
+
+    #@property
+    #def saldo(self):
+    #    return self._saldo
     #Não faz sentido o set para o saldo, pois já temos o sacar e depositar
 
 
