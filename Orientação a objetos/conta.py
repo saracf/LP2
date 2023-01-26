@@ -8,6 +8,7 @@ class Conta:
         self._saldo = s #atributo provado
         self._limite = l
         self._historico = Historico()
+        self.status = st
 
     #Métodos de acesso
     @property
