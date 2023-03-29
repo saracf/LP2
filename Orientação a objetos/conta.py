@@ -1,5 +1,4 @@
 from historico import Historico
-
 class Conta:
     #Para definir os atributos precisamos di init
     def __init__(self, n, t, s, l=100): #Variaveis locais
@@ -8,14 +7,12 @@ class Conta:
         self._saldo = s #atributo provado
         self._limite = l
         self._historico = Historico()
+        self.status = st
 
     #Métodos de acesso
     @property
     def saldo(self):
         return self._saldo
-    #Não faz sentido o set para o saldo, pois já temos o sacar e depositar
-
-
     @property
     def limite(self):
         return self._limite
@@ -48,4 +45,6 @@ class Conta:
         self.historico.imprime()
 
     def __str__(self):
-        return f'{self.__class__.__name__} {self._numero}: {self.titular} Saldo:{self.saldo}'
+        return f'{self.__class__.__name__} {self._numero}: {self.titular}'
+    #def __str__(self):
+    #    return f'{self.__class__.__name__} {self._numero}: {self.titular} Saldo:{self.saldo}'
